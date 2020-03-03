@@ -1,5 +1,6 @@
 'use strict';
 
+const htmlToText = require('html-to-text');
 const nodemailer = require('nodemailer');
 
 const localTransport = nodemailer.createTransport({
@@ -16,6 +17,9 @@ function sendEmail (options, callback) {
 
     // TODO Step 2: Generate plaintext alternative from HTML
     // This should take no more than a few lines
+    
+    const html = email.html
+    email.text = htmlToText.fromString(html)
 
     return localTransport.sendMail(email, (err, info) => {
         if (err) {
