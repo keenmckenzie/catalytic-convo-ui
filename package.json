@@ -13,6 +13,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "async": "^2.0.1",
+    "html-to-text": "^5.1.1",
     "nodemailer": "^2.5.0",
     "verror": "^1.9.0"
   },
@@ -22,7 +23,7 @@
     "maildev": "^0.14.0",
     "mkdirp": "^0.5.1",
     "mocha": "^3.0.2",
-    "node-sass": "^3.12.2",
+    "node-sass": "^4.13.1",
     "pug": "^2.0.0-beta5"
   }
 }

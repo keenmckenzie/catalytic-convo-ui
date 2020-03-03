@@ -1,32 +1,73 @@
 doctype html
 
-html(lang="en")
-  head
-    meta(charset="utf-8")
-    meta(name="viewport", content="width=device-width")
-    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+//Responsive email template from adobe
 
-    title Pushbot
+head
+  meta(charset='utf-8')
+  // utf-8 works for most cases
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  // Forcing initial-scale shouldn't be necessary
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  // Use the latest (edge) version of IE rendering engine
+  title Canceled Task
+  // The title tag shows in email notifications, like Android 4.4.
+  // Please use an inliner tool to convert all CSS to inline as inpage or external CSS is removed by email clients
+  // important in CSS is used to prevent the styles of currently inline CSS from overriding the ones mentioned in media queries when corresponding screen sizes are encountered
+  // CSS Reset
+  style
+    include ../assets/email.css
 
-    style
-      include ../assets/email.css
-
-  body(class="body")
-    center(class="body")
-
-      <!--[if mso]><table cellspacing="0" cellpadding="0" border="0" class="center-content-mso" align="center"><tr><td><![endif]-->
-
-      div(class="center-content")
-        table(cellspacing="0" cellpadding="0" border="0" align="center" class="container-outer" role="presentation")
-          //- vertical padding
+table(bgcolor='#e0e0e0' cellpadding='0' cellspacing='0' border='0' height='100%' width='100%' style='border-collapse:collapse;')
+  tr
+    td
+      center(style='width: 100%;')
+        // Visually Hidden Preheader Text : BEGIN
+        div(style='display:none;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;font-family: sans-serif;')  Cancelled Task Alert!
+        // Visually Hidden Preheader Text : END
+        // Email Header : BEGIN
+        table.email-container(align='center' width='600')
           tr
-            td(style="padding: 20px 0;")
-
+            td(style='padding: 20px 0; text-align: center')
+              img(src='https://catalytic.pushbot.com/assets/email/site/assets/images/emails/catalytic-logo-reversed.png' width='200' height='50' alt='catalytic-logo' border='0')
+        // Email Header : END
+        // Email Body : BEGIN
+        table.email-container(cellspacing='0' cellpadding='0' border='0' align='center' bgcolor='#ffffff' width='600')
+          // Hero Image, Flush : BEGIN
           tr
-            td(class="container-inner")
-              table(cellspacing="0" cellpadding="0" border="0" width="100%")
+            td.full-width-image
+              img(src='https://images.techhive.com/images/article/2016/12/25168022601_d627681bc3_h-100700630-large.jpg' width='600' alt='cancelled' border='0' align='center' style='width: 100%; max-width: 600px; height: auto;')
+          // Hero Image, Flush : END
+          // 1 Column Text : BEGIN
+          tr
+            td(style='padding: 40px; text-align: center; font-family: sans-serif; font-size: 15px; mso-height-rule: exactly; line-height: 20px; color: #555555;') Your task was canceled! Bummer.
+              br
+              br
+              // Button : Begin
+              table(cellspacing='0' cellpadding='0' border='0' align='center' style='margin: auto')
                 tr
-                  td(class="content")
-                    | Your task was canceled! Bummer.
-
-      <!--[if mso]></td></tr></table><![endif]-->
+                  td.button-td(style='border-radius: 3px; background: #222222; text-align: center;')
+                    a.button-a(href='http://www.catalytic.com' style='background: #222222; border: 15px solid #222222; padding: 0 10px;color: #ffffff; font-family: sans-serif; font-size: 13px; line-height: 1.1; text-align: center; text-decoration: none; display: block; border-radius: 3px; font-weight: bold;')
+                      //if mso
+                      | Link to Catalytic
+                      //if mso
+              // Button : END
+          // 1 Column Text : BEGIN
+          // Background Image with Text : BEGIN
+          tr
+            td(background='images/Image_600x230.png' bgcolor='#222222' valign='middle' style='text-align: center; background-position: center center !important; background-size: cover !important;')
+              //if gte mso 9
+                v:rect(xmlns:v='urn:schemas-microsoft-com:vml' fill='true' stroke='false' style='width:600px;height:175px; background-position: center center !important;')
+                  v:fill(type='tile' src='assets/Responsive/Image_600x230.png' color='#222222')
+                    v:textbox(inset='0,0,0,0')
+              //if gte mso 9
+        // Email Footer : BEGIN
+        table.email-container(align='center' width='600')
+          tr
+            td(style='padding: 40px 10px;width: 100%;font-size: 12px; font-family: sans-serif; mso-height-rule: exactly; line-height:18px; text-align: center; color: #888888;')
+              br
+              |                 Keenan&apos;s Coding Challenge
+              br
+              span.mobile-link--footer https://github.com/keenmckenzie
+              br
+              br
+        // Email Footer : END
