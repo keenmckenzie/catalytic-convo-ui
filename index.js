@@ -39,7 +39,8 @@ function respondToEmail (email, callback) {
     if (text.includes("cancel")) {
         const cancelTemplate = require('./assets/templates/canceled');
         return sendEmail({
-            html: cancelTemplate()
+            html: cancelTemplate(),
+            subject: 'Task Cancelled by Pushbot'
         }, callback);
    }    
 }
