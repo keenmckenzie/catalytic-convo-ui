@@ -35,6 +35,13 @@ function sendEmail (options, callback) {
 
 function respondToEmail (email, callback) {
     // TODO: implement as part of Step 5
+    const text = email.text;
+    if (text.includes("cancel")) {
+        const cancelTemplate = require('./assets/templates/canceled');
+        return sendEmail({
+            html: cancelTemplate()
+        }, callback);
+   }    
 }
 
 module.exports = {
